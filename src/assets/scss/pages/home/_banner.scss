@@ -1,0 +1,141 @@
+.banner {
+    margin-top: 40px;
+
+    &-image {
+        width: 100%;
+        height: 100%;
+
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    &-nav {
+        position: relative;
+        @include flex(center, unset);
+        column-gap: 12px;
+        margin-bottom: 24px;
+        width: 100%;
+    }
+
+    &-link {
+        font-size: 16px;
+        color: $link-color;
+        font-weight: 600;
+        @include trn();
+        position: relative;
+        padding-bottom: 2px;
+
+        &::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: $black-color;
+            transition: width 0.3s ease;
+        }
+
+        &:hover::after {
+            width: 100%;
+        }
+
+        &:hover {
+            color: $black-color;
+        }
+
+        @include md(900) {
+            font-size: 12px;
+        }
+        @include md(700) {
+            font-size: 10px;
+        }
+        @include md(400) {
+            font-size: 8px;
+        }
+    }
+
+    &-button {
+        @include flex(center, unset);
+        font-size: 16px;
+        font-weight: 600;
+        position: absolute;
+        right: 0;
+
+        @include md(900) {
+            font-size: 12px;
+        }
+        @include md(700) {
+            font-size: 10px;
+        }
+        @include md(400) {
+            font-size: 8px;
+        }
+    }
+}
+
+.swiper {
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.swiper-pagination-bullet {
+  width: 12px !important;
+  height: 4px !important;
+  border-radius: 30px !important;
+  background: $yellow-color !important;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(80px);
+    -webkit-backdrop-filter: blur(80px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 10px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s ease, color 0.3s ease;
+
+    &::after {
+        font-size: 14px;
+        font-weight: bold;
+    }
+
+    &:hover {
+        background-color: white;
+        color: $yellow-color;
+    }
+}
+
+.swiper-button-prev {
+    left: 20px;
+}
+
+.swiper-button-next {
+    right: 20px;
+}

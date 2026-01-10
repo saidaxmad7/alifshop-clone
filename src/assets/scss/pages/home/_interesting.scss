@@ -1,0 +1,51 @@
+.interesting {
+    &-items {
+        margin-top: 24px;
+
+        @include md(1000) {
+            flex-wrap: wrap;
+            row-gap: 32px;
+
+            @include md(600) {
+                justify-content: center;
+            }
+        }
+    }
+
+    &-card {
+        flex-wrap: wrap;
+        @include md(920) {
+            width: 180px;
+        }
+        @include md(820) {
+            width: 200px;
+        }
+        @include md(600) {
+            width: 100%;
+        }
+    }
+
+    &-btns {
+        margin-top: 20px;
+        @include flex(center, center);
+    }
+
+    &-image {
+        width: 80%;
+    }
+
+    &-button {
+        padding: 8px 0;
+        width: 35%;
+        border-radius: 8px;
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 150%;
+        background-color: #ffe299;
+        @include trn();
+
+        &:hover {
+            background-color: $yellow-color;
+        }
+    }
+}

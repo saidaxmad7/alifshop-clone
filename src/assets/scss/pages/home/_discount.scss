@@ -1,0 +1,187 @@
+.discount {
+    margin-top: 40px;
+
+    &-row {
+        @include flex(center, unset);
+        column-gap: 24px;
+        margin-bottom: 20px;
+    }
+
+    &-title {
+        font-size: 36px;
+        font-weight: 600;
+        line-height: 150%;
+        color: $black-color;
+
+        @include md(480) {
+            font-size: 24px;
+        }
+    }
+
+    &-button {
+        @include flex(center, unset);
+        column-gap: 2px;
+        font-size: 16px;
+        color: $blue-color;
+        font-weight: 500;
+        @include trn();
+
+        &:hover {
+            color: $black-color;
+        }
+
+        @include md(480) {
+            font-size: 12px;
+        }
+    }
+
+    &-items {
+        @include flex(center, unset);
+        column-gap: 28px;
+        width: 100%;
+
+        @include md(1000) {
+            overflow-x: scroll;
+            &::-webkit-scrollbar {
+                display: none;
+            }
+        }
+    }
+
+    &-card {
+        width: 15%;
+        flex-wrap: wrap;
+    }
+
+    &-image {
+        width: 100%;
+        height: 150px;
+        position: relative;
+        background-color: $border-color;
+        padding: 4px;
+        border-radius: 8px;
+
+        img {
+            width: 100%;
+        object-fit: contain;
+            height: 100%;
+        }
+    }
+
+    &-discount {
+        padding: 4px 12px;
+        background-color: $red-color;
+        position: absolute;
+        border-radius: 30px;
+        font-size: 16px;
+        color: $white-color;
+        bottom: 8px;
+        font-weight: 500;
+    }
+
+    &-like {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: $white-color;
+        border-radius: 50%;
+        @include flex(center, center);
+        padding: 4px;
+        @include trn();
+
+        &:hover {
+            background-color: $yellow-color;
+        }
+    }
+
+    &-text {
+        font-size: 12px;
+        color: $text-color;
+        margin: 4px 0;
+        font-weight: 500;
+    }
+
+    &-price {
+        font-size: 12px;
+        text-decoration: line-through;
+        color: $link-color;
+        font-weight: 600;
+    }
+
+    &-discount-price {
+        font-size: 14px;
+        font-weight: 600;
+        color: $red-color;
+        margin: 4px 0 0;
+    }
+
+    &-addcart {
+        @include flex(center, unset);
+        background-color: $yellow-color;
+        padding: 6px 12px;
+        border-radius: 8px;
+        column-gap: 8px;
+        font-size: 14px;
+        font-weight: 600;
+        @include trn();
+        border: 2px solid transparent;
+        margin-top: 8px;
+
+        &:hover {
+            border: 2px solid $yellow-color;
+            background-color: transparent;
+        }
+    }
+
+    &-qty-controls {
+        @include flex(center, space-evenly);
+        gap: 10px;
+        margin-top: 8px;
+        width: 70%;
+        border: 1px solid $border-color;
+        border-radius: 8px;
+        padding: 6px;
+
+        & span {
+            font-size: 16px;
+            font-weight: 600;
+            color: $text-color;
+        }
+    }
+
+  
+
+    &-meta-vertical {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        margin-top: 6px;
+
+        .discount-prices-vertical {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .discount-pill {
+            display: inline-block;
+            background: $yellow-color;
+            color: $black-color;
+            padding: 4px 8px;
+            border-radius: 16px;
+            font-size: 12px;
+            font-weight: 600;
+            width: fit-content;
+        }
+
+        .discount-actions-vertical {
+            display: flex;
+            flex-direction: column;
+
+            .discount-addcart {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    }
+}

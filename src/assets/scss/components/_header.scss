@@ -1,0 +1,360 @@
+.header {
+    padding: 20px 0;
+    position: relative;
+
+    @include md(800) {
+        padding: 10px 0;
+    }
+
+    &-row {
+        @include flex(center, space-between);
+        position: relative;
+
+        @include md(800) {
+            display: none;
+        }
+    }
+
+    &-categories {
+        &-button {
+            @include flex(center, center);
+            column-gap: 8px;
+            padding: 20px 8px;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: 500;
+            background-color: $yellow-color;
+            color: $black-color;
+            @include trn();
+
+            &:hover {
+                background-color: lighten($yellow-color, 10%);
+            }
+
+            span {
+                display: inline;
+                @include md(1000) {
+                    display: none;
+                }
+            }
+        }
+
+        &-drawer {
+            position: relative;
+            top: 80px;
+            height: 100vh;
+            body {
+                height: calc(100vh - 55px);
+                overflow: hidden;
+            }
+
+            &-close {
+                position: absolute;
+                right: 200px;
+                z-index: 1050;
+            }
+        }
+
+        &-list {
+            position: fixed;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            z-index: 999;
+        }
+    }
+
+    &-category {
+        &-main {
+            height: 100%;
+            background-color: #f5f7f8;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        &-item {
+            font-size: 16px;
+            font-weight: 500;
+            padding: 14px 8px;
+            @include trn();
+            border-radius: 4px;
+
+            &:hover,
+            &.active {
+                color: $yellow-color;
+                background-color: #fff;
+                padding: 14px 8px;
+            }
+        }
+
+        &-link {
+            font-size: 16px;
+            font-weight: 500;
+            padding: 14px 8px;
+            @include trn();
+            border-radius: 4px;
+
+            &:hover,
+            &.active {
+                color: $yellow-color;
+                background-color: #fff;
+                padding: 14px 8px;
+            }
+        }
+    }
+
+    &-subcategory {
+        width: 70%;
+        margin: 32px 0 0 44px;
+
+        &-list {
+            display: flex;
+            flex-wrap: wrap;
+            width: 100%;
+        }
+
+        &-item {
+            width: 33%;
+        }
+
+        &-link {
+            font-size: 18px;
+            font-weight: 600;
+            padding: 8px 0;
+            display: block;
+            @include trn();
+
+            &:hover {
+                color: $yellow-color;
+            }
+        }
+    }
+
+    &-subsubcategory {
+        &-list {
+            display: flex;
+            flex-direction: column;
+            row-gap: 6px;
+            margin: 8px 0 24px 0;
+        }
+
+        &-item {
+            font-size: 14px;
+            @include trn();
+
+            &:hover {
+                color: $yellow-color;
+            }
+        }
+    }
+
+    &-search {
+        @include flex(center, unset);
+        column-gap: 12px;
+        border: 2px solid $yellow-color;
+        padding: 0 0 0 12px;
+        border-radius: 4px;
+        position: relative;
+
+        input {
+            border: none;
+            outline: none;
+            font-size: 16px;
+            font-weight: 500;
+            width: 400px;
+
+            @include md(1200) {
+                width: 300px;
+            }
+
+            @include md(1025) {
+                width: 400px;
+            }
+            @include md(940) {
+                width: 300px;
+            }
+            @include md(860) {
+                width: 270px;
+            }
+        }
+
+        button {
+            background-color: $yellow-color;
+            padding: 6px 12px;
+        }
+
+        &-dropdown {
+            position: absolute;
+            width: 100%;
+            background-color: $white-color;
+            top: 120%;
+            left: 0;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            z-index: 1000;
+            padding: 24px 14px;
+
+            &-container {
+                display: flex;
+                flex-direction: column;
+                row-gap: 16px;
+            }
+
+            &-item {
+                font-weight: 500;
+            }
+        }
+    }
+
+    &-btn {
+        @include flex(center, center);
+        flex-direction: column;
+        row-gap: 2px;
+        font-size: 14px;
+    }
+
+    &-sign {
+        border: 2px solid $yellow-color;
+        padding: 8px 16px;
+        border-radius: 4px;
+        font-size: 16px;
+        @include trn();
+
+        &:hover {
+            background-color: $yellow-color;
+            color: $white-color;
+        }
+    }
+
+    &-login {
+        &-input {
+            margin-bottom: 16px;
+
+            label {
+                display: block;
+                margin: 24px 0 8px;
+                font-weight: 500;
+                font-size: 14px;
+                color: $black-color;
+            }
+            input {
+                width: 100%;
+                padding: 12px 16px;
+                border: 1px solid #d9d9d9;
+                border-radius: 6px;
+                font-size: 16px;
+                outline: none;
+                transition: border-color 0.3s ease;
+
+                &::placeholder {
+                    color: #bfbfbf;
+                }
+
+                &:focus {
+                    border-color: #fabb05; // sariq rangga yaqin
+                    box-shadow: 0 0 0 2px rgba(250, 187, 5, 0.2);
+                }
+            }
+        }
+
+        &-submit {
+            width: 100%;
+            height: 44px;
+            margin-bottom: 12px;
+            background-color: $yellow-color;
+            border: none;
+            border-radius: 6px;
+            font-weight: 500;
+            font-size: 16px;
+            color: #000;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+
+            &:hover {
+                background-color: lighten($yellow-color, 10%);
+            }
+        }
+
+        &-cancel {
+            background-color: transparent;
+            border: 1px solid #d9d9d9;
+            transition: background-color 0.3s ease;
+
+            &:hover {
+                background-color: #f5f5f5;
+            }
+        }
+    }
+
+    &-langs {
+        display: flex;
+        column-gap: 4px;
+    }
+
+    &-lang {
+        font-weight: 500;
+        @include trn();
+
+        &.active,
+        &:hover {
+            font-weight: 600;
+        }
+    }
+
+    &-like {
+        @include md(1025) {
+            display: none;
+        }
+    }
+
+    &-mobile {
+        &-search {
+            @include flex(center, unset);
+            column-gap: 12px;
+            border: 3px solid $border-color;
+            padding: 0 0 0 12px;
+            border-radius: 4px;
+            display: none;
+
+            @include md(800) {
+                display: flex;
+            }
+
+            input {
+                border: none;
+                outline: none;
+                font-size: 16px;
+                font-weight: 500;
+                width: 100%;
+            }
+
+            button {
+                padding: 5px 12px;
+            }
+        }
+
+        &-nav {
+            @include flex(center, space-evenly);
+            box-shadow: 0px -6px 7px -4px rgba(34, 60, 80, 0.6);
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+            padding: 8px 0;
+            display: none;
+            background-color: $white-color;
+            z-index: 1000;
+
+            @include md(800) {
+                display: flex;
+            }
+        }
+    }
+
+    &-sign {
+        padding: 20px 12px;
+        @include flex(center,center);
+    }
+}
+

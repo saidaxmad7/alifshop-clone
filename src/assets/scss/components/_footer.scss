@@ -1,0 +1,194 @@
+.footer {
+    margin-top: 80px;
+
+    &-top {
+        background-color: $grey-color;
+        padding: 20px;
+
+        &-row {
+            @include flex(center, space-between);
+            width: 100%;
+            max-width: 1274px;
+            margin: 0 auto;
+            padding: 0 15px;
+            column-gap: 20px;
+
+            @include md(980) {
+                @include flex(center, unset);
+                column-gap: 20px;
+            }
+        }
+
+        &-image {
+            width: 30%;
+            height: 100%;
+
+            img {
+                width: 100%;
+                height: 100%;
+            }
+        }
+
+        &-texts {
+            width: 50%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            row-gap: 12px;
+
+            @include md(630) {
+                width: 100%;
+            }
+        }
+
+        &-title {
+            font-size: 28px;
+            font-weight: 500;
+
+            @include md(630) {
+                font-size: 16px;
+            }
+        }
+
+        &-text {
+            font-size: 14px;
+            color: $link-color;
+            font-weight: 600;
+
+            @include md(630) {
+                font-size: 8px;
+            }
+        }
+
+        &-links {
+            display: flex;
+            column-gap: 20px;
+
+            @include md(980) {
+                display: none;
+            }
+        }
+
+        &-scan {
+            width: 20%;
+            @include flex(center, center);
+            flex-direction: column;
+            row-gap: 12px;
+
+            @include md(980) {
+                display: none;
+            }
+
+            &-text {
+                text-align: center;
+                font-weight: 500;
+            }
+        }
+
+        &-none {
+            display: none;
+            background-color: $yellow-color;
+            padding: 12px 0;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            @include trn();
+
+            &:hover {
+                background-color: $btn-hover-color;
+            }
+
+            @include md(980) {
+                display: block;
+            }
+
+            @include md(630) {
+                font-size: 12px;
+            }
+        }
+
+        &-img {
+            background-color: $white-color;
+            padding: 8px;
+            border-radius: 8px;
+            border: 1px solid $link-color;
+        }
+    }
+
+    &-row {
+        background-color: $text-color;
+        padding: 52px 0;
+    }
+
+    &-nav {
+        @include flex(unset, space-between);
+
+        @include md(1100) {
+            flex-wrap: wrap;
+        }
+
+        &-item {
+            display: flex;
+            flex-direction: column;
+            row-gap: 20px;
+
+            @include md(1100) {
+                width: 45%;
+                margin-top: 32px;
+            }
+            @include md(768) {
+                width: 100%;
+            }
+
+            &-text {
+                color: $link-color;
+                font-size: 12px;
+                font-weight: 400;
+                letter-spacing: 0.4px;
+            }
+
+            &-link {
+                color: $white-color;
+                font-size: 14px;
+                font-weight: 500;
+                @include trn();
+
+                &:hover {
+                    color: $yellow-color;
+                }
+            }
+
+            &-social {
+                @include flex(center, unset);
+                column-gap: 8px;
+
+                &-link {
+                    font-size: 18px;
+                    color: $white-color;
+                    font-weight: 600;
+                    @include trn();
+
+                    &:hover {
+                        color: $yellow-color;
+                    }
+                }
+            }
+        }
+    }
+
+    &-bottom {
+        &-row {
+            margin-top: 44px;
+            border-top: 1px solid $grey-color;
+        }
+
+        &-texts {
+            @include flex(center, space-between);
+            padding-top: 44px;
+        }
+
+        &-text {
+            color: $grey-color;
+        }
+    }
+}

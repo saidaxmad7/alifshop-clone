@@ -1,0 +1,205 @@
+.profile {
+
+    &-header {
+        @include flex(center, space-between);
+    }
+
+    &-logout {
+        color: $red-color;
+        font-size: 16px;
+    }
+
+    &-title {
+        @include flex(center,none);
+        gap: 8px;
+    }
+
+    &-icon {
+        border: 1px solid $yellow-color;
+        border-radius: 50%;
+        @include flex(center,center);
+        padding: 8px;
+    }
+}
+
+/* Agar SCSS Module ishlatmasangiz, barcha klasslar global bo'ladi. */
+/* purchases-list.scss */
+
+// Ranglar va o'zgaruvchilar
+$primary-color: #1890ff; 
+$success-color: #52c41a;
+$warning-color: #faad14;
+$text-color: #333;
+$text-secondary: #666;
+$border-color: #f0f0f0;
+$background-color: #f7f7f7;
+$shadow-light: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+$shadow-hover: 0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.08);
+
+.loading-message {
+    text-align: center;
+    padding: 2rem;
+    color: $text-secondary;
+}
+
+// Bo'sh ro'yxat stili
+.empty-purchases-content {
+    text-align: center;
+    padding: 5rem 1rem;
+    background-color: $background-color;
+    border-radius: 8px;
+    box-shadow: $shadow-light;
+    
+    .empty-icon {
+        font-size: 4rem;
+        color: #ccc;
+        margin-bottom: 1rem;
+    }
+    
+    .main-message {
+        color: $text-color;
+        margin-bottom: 0.5rem;
+    }
+    
+    .sub-message {
+        color: $text-secondary;
+        margin-bottom: 1.5rem;
+    }
+}
+
+// Buyurtmalar Ro'yxati stili
+.purchases-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1rem 0;
+}
+
+// Har bir buyurtma kartasi stili
+.order-card {
+    background-color: white;
+    padding: 1.25rem;
+    border: 1px solid $border-color;
+    border-radius: 12px;
+    box-shadow: $shadow-light;
+    transition: box-shadow 0.2s ease-in-out;
+
+    &:hover {
+        box-shadow: $shadow-hover;
+    }
+}
+
+// Sarlavha stili
+.order-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 0.75rem;
+    margin-bottom: 0.75rem;
+    border-bottom: 1px solid $border-color;
+
+    .order-title {
+        color: $text-color;
+        margin: 0;
+    }
+}
+
+// Mahsulotlar ro'yxati stili
+.items-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding-top: 0.75rem;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid $border-color;
+}
+
+// Har bir mahsulot qatori stili
+.item-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.875rem;
+
+    .item-details {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        max-width: 80%;
+
+        .item-image {
+            width: 40px;
+            height: 40px;
+            object-fit: cover;
+            border-radius: 6px;
+            flex-shrink: 0;
+        }
+
+        .item-title {
+            color: $text-secondary;
+            font-weight: 500;
+            line-height: 1.4;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2; 
+            overflow: hidden;
+        }
+    }
+
+    .item-price {
+        font-weight: 600;
+        color: $text-color;
+        white-space: nowrap;
+    }
+}
+
+// Umumiy ma'lumotlar stili
+.order-summary {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    font-size: 0.875rem;
+    color: $text-secondary;
+    padding-top: 0.5rem;
+
+    @media (min-width: 768px) {
+        grid-template-columns: repeat(2, 1fr); 
+    }
+    
+    .summary-row {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.5rem;
+        
+        &:nth-child(2) {
+            align-items: flex-start;
+        }
+    }
+
+    .summary-icon {
+        font-size: 1rem;
+        margin-top: 0.2rem;
+        flex-shrink: 0;
+        
+        &.anticon-dollar-outlined { color: $success-color; }
+        &.anticon-environment-outlined { color: $primary-color; }
+        &.anticon-clock-circle-outlined { color: #722ed1; }
+    }
+
+    .total-amount {
+        font-size: 1.25rem;
+        font-weight: bold;
+        color: $success-color;
+    }
+    
+    .summary-label {
+        font-weight: 600;
+        margin: 0;
+    }
+    
+    .summary-value {
+        display: block; 
+        line-height: 1.4;
+    }
+}

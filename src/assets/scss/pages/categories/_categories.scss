@@ -1,0 +1,75 @@
+.categories {
+    margin-top: 12px;
+
+    &-texts {
+        @include flex(center, unset);
+        column-gap: 8px;
+        margin-bottom: 8px;
+
+        &__title {
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        &__subtitle {
+            color: $link-color;
+            font-weight: 500;
+            font-size: 14px;
+        }
+    }
+
+    .active {
+        color: $blue-color;
+    }
+
+    &-title {
+        font-size: 28px;
+        font-weight: 600;
+        margin-bottom: 16px;
+    }
+
+    &-list {
+        @include flex(center, start);
+        column-gap: 16px;
+        overflow-x: auto;
+        padding-bottom: 12px;
+        width: 100%;
+
+        &__item {
+            flex: 0 0 auto;
+            padding: 8px 16px;
+            border: 1px solid $link-color;
+            border-radius: 20px;
+            background-color: $border-color;
+        }
+    }
+
+    &-content {
+        @include flex(center, unset);
+        column-gap: 24px;
+    }
+    &-left {
+        width: 20%;
+    }
+
+    &-products {
+        width: 80%;
+
+        &__nav {
+            @include flex(center, unset);
+            column-gap: 16px;
+
+            &-title{
+                color: $link-color;
+                font-weight: 500;
+                font-size: 14px;
+            }
+
+            &-link {
+                color: $black-color;
+                font-weight: 500;
+                font-size: 14px;
+            }
+        }
+    }
+}

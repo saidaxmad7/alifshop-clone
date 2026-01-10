@@ -1,0 +1,40 @@
+/* Styles for like (wishlist) icon */
+.discount-like {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.02);
+    color: #999; /* default color */
+    transition: color 0.15s ease, background 0.15s ease;
+    border: none;
+}
+
+.discount-like:hover {
+    color: #ff3b3b;
+}
+
+.discount-like.active {
+    color: #ff3b3b;
+    background: rgba(255, 59, 59, 0.06);
+}
+
+/* ensure svg inherits color */
+.discount-like svg {
+    width: 18px;
+    height: 18px;
+}
+
+/* default: outlined heart (no fill) */
+.discount-like svg path {
+    fill: none;
+    stroke: currentColor;
+}
+
+/* when active: filled red heart */
+.discount-like.active svg path {
+    fill: #ff3b3b;
+    stroke: #ff3b3b;
+}
