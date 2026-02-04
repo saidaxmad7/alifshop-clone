@@ -14,7 +14,7 @@ import CategoryNav from "@/components/categories/CategoryNav";
 import ProductCard from "@/components/categories/ProductCard";
 
 export default function Categories() {
-    const [categories, setCategories] = useState<Category[]>([]);
+    // Removed unused categories state to fix TypeScript error
     const [currentCategory, setCurrentCategory] = useState<Category | null>(
         null,
     );
@@ -32,7 +32,6 @@ export default function Categories() {
         Axios.get(urls.categories.getList)
             .then((res) => {
                 const list: Category[] = res.data;
-                setCategories(list);
 
                 const found = slug
                     ? list.find((c) => slugify(c.name) === slug.toLowerCase())
@@ -43,7 +42,9 @@ export default function Categories() {
                     setBreadcrumbs([found]);
                 }
             })
-            .catch(() => setCategories([]));
+            .catch(() => {
+                /* handle error if needed */
+            });
     }, [slug]);
 
     useEffect(() => {
