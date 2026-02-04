@@ -42,7 +42,7 @@ export default function ProductDetailPage() {
                 }
             })
             .catch((err: Error) =>
-                console.error(err, "Error fetching product")
+                console.error(err, "Error fetching product"),
             );
     }, [id]);
 
@@ -57,7 +57,7 @@ export default function ProductDetailPage() {
     }
 
     const cartItem = cartCtx?.cart.find(
-        (c) => String(c.id) === String(product.id)
+        (c) => String(c.id) === String(product.id),
     );
     const inCart = !!cartItem;
 
@@ -110,8 +110,8 @@ export default function ProductDetailPage() {
 
                         {(() => {
                             const display = product.is_sale
-                                ? product.discountPrice ?? product.price
-                                : product.price ?? 0;
+                                ? (product.discountPrice ?? product.price)
+                                : (product.price ?? 0);
                             const monthly = Math.ceil(display / selectedTerm);
                             const terms = [3, 6, 12, 18, 24];
 
@@ -239,7 +239,7 @@ export default function ProductDetailPage() {
                                     <button
                                         onClick={() =>
                                             cartCtx?.decrementItem(
-                                                String(product.id)
+                                                String(product.id),
                                             )
                                         }
                                     >
@@ -249,7 +249,7 @@ export default function ProductDetailPage() {
                                     <button
                                         onClick={() =>
                                             cartCtx?.incrementItem(
-                                                String(product.id)
+                                                String(product.id),
                                             )
                                         }
                                     >
@@ -298,12 +298,12 @@ export default function ProductDetailPage() {
                         </p>
                     </div>
                 )}
-                {product.featur?.length > 0 && (
+                {(product.featur ?? []).length > 0 && (
                     <div className='product-detail-describtion'>
                         <h1 className='product-detail-describtion-title'>
                             Xususiyatlari
                         </h1>
-                        {product.featur.map((item, index) => (
+                        {(product.featur ?? []).map((item, index) => (
                             <p
                                 className='product-detail-describtion-subtitle'
                                 key={index}

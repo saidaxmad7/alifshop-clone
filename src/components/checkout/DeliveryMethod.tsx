@@ -1,6 +1,14 @@
 import { Typography, Radio } from "antd";
 
-export default function DeliveryMethod({ shippingValue, setShippingValue }) {
+interface Props {
+  shippingValue: number;
+  setShippingValue: (value: number) => void;
+}
+
+export default function DeliveryMethod({
+  shippingValue,
+  setShippingValue,
+}: Props) {
   return (
     <div className="section">
       <Typography.Title level={4}>Tovarni qabul qilish</Typography.Title>

@@ -8,10 +8,12 @@ import Login from "../login/Login";
 import { FirebaseContext } from "@/app/providers";
 
 const UserMenu: React.FC = () => {
-    const { auth } = useContext(FirebaseContext);
+    const firebaseContext = useContext(FirebaseContext);
+    const auth = firebaseContext?.auth;
     const [userName, setUserName] = useState<string | null>(null);
 
     useEffect(() => {
+        if (!auth) return;
         const unsubscribe = auth.onAuthStateChanged((user) => {
             if (user) setUserName(user.displayName || null);
             else setUserName(null);
@@ -20,10 +22,10 @@ const UserMenu: React.FC = () => {
     }, [auth]);
 
     return (
-        <Link href="/profile">
+        <Link href='/profile'>
             {userName ? (
-                <Typography.Title level={5} className="profile-title">
-                    <span className="profile-icon">
+                <Typography.Title level={5} className='profile-title'>
+                    <span className='profile-icon'>
                         <AkkIcon />
                     </span>
                     {userName}

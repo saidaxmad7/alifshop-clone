@@ -22,13 +22,16 @@ const tabs = [
 ];
 
 export default function ProfilePage() {
-    const { auth } = useContext(FirebaseContext);
+    const firebase = useContext(FirebaseContext);
+
     const [user, setUser] = useState<User | null>(null);
     const [loading, setLoading] = useState(true);
     const [activeTab, setActiveTab] = useState("purchases");
 
     useEffect(() => {
-        const unsubscribe = auth.onAuthStateChanged((usr) => {
+        if (!firebase) return;
+
+        const unsubscribe = firebase.auth.onAuthStateChanged((usr) => {
             setUser(
                 usr
                     ? {
@@ -36,25 +39,17 @@ export default function ProfilePage() {
                           email: usr.email,
                           uid: usr.uid,
                       }
-                    : null
+                    : null,
             );
             setLoading(false);
         });
-        return () => unsubscribe();
-    }, [auth]);
 
-    const handleLogout = async () => {
-        try {
-            await auth.signOut();
-            setUser(null);
-        } catch (error) {
-            console.error("Chiqishda xato:", error);
-        }
-    };
+        return () => unsubscribe();
+    }, [firebase]);
 
     if (loading) return null;
 
-    if (!user) {
+    if (!firebase || !user) {
         return (
             <div className='profile'>
                 <div className='container'>
@@ -69,6 +64,11 @@ export default function ProfilePage() {
             </div>
         );
     }
+
+    const handleLogout = async () => {
+        await firebase.auth.signOut();
+        setUser(null);
+    };
 
     return (
         <div className='profile'>

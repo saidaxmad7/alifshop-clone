@@ -22,7 +22,6 @@ export interface Category {
     subcategories: SubCategory[];
     parent_id: number | null;
 }
-
 export interface SubCategory {
     id: number;
     name: string;

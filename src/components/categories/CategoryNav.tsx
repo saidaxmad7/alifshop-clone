@@ -1,27 +1,22 @@
-"use client";
-
-import React from "react";
-import type { Category } from "@/types/Intefaces";
+import type { SubCategory } from "@/types/Intefaces";
 
 interface Props {
-  subcategories: Category[];
-  onClick: (subcat: Category) => void;
+    subcategories: SubCategory[];
+    onClick: (subcat: SubCategory) => void;
 }
 
-const CategoryNav: React.FC<Props> = ({ subcategories, onClick }) => {
-  return (
-    <nav className="categories-list">
-      {subcategories.map((subcat) => (
-        <button
-          key={subcat.id}
-          className="categories-list__item"
-          onClick={() => onClick(subcat)}
-        >
-          {subcat.name}
-        </button>
-      ))}
-    </nav>
-  );
-};
-
-export default CategoryNav;
+export default function CategoryNav({ subcategories, onClick }: Props) {
+    return (
+        <nav className='category-nav'>
+            {subcategories.map((subcat) => (
+                <button
+                    key={subcat.id}
+                    onClick={() => onClick(subcat)}
+                    className='category-nav-item'
+                >
+                    {subcat.name}
+                </button>
+            ))}
+        </nav>
+    );
+}

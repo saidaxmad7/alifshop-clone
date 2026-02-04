@@ -1,6 +1,21 @@
 import { Typography } from "antd";
 
-export default function OrderSummary({ cart, totalQty, totalSum }) {
+interface CartItem {
+  id: number | string;
+  title: string;
+  price: number;
+  discountPrice?: number;
+  images?: string[];
+  qty: number;
+}
+
+interface Props {
+  cart: CartItem[];
+  totalQty: number;
+  totalSum: number;
+}
+
+export default function OrderSummary({ cart, totalQty, totalSum }: Props) {
   return (
     <div className="right-side">
       <Typography.Title level={4}>
@@ -11,9 +26,11 @@ export default function OrderSummary({ cart, totalQty, totalSum }) {
         <div key={item.id} className="cart-item">
           <img src={item.images?.[0]} className="cart-img" />
           <div>
-            <div className="cart-title">{item.title} (x{item.qty})</div>
+            <div className="cart-title">
+              {item.title} (x{item.qty})
+            </div>
             <div className="cart-price">
-              {(item.discountPrice || item.price).toLocaleString()} so‘m
+              {(item.discountPrice ?? item.price).toLocaleString()} so‘m
             </div>
           </div>
         </div>

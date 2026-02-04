@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useContext, useEffect } from "react";
+import { useState, useContext } from "react";
 import type { CartContextType } from "@/context/CartContext";
 import type { Address } from "@/components/checkout/AddAddressModal";
 import { getAuth } from "firebase/auth";
@@ -21,22 +21,22 @@ export default function CheckoutPage() {
     const cartContext = useContext(CartContext) as CartContextType;
     const cart = cartContext?.cart ?? [];
     const clear = cartContext?.clear ?? (() => {});
-    const [userId, setUserId] = useState<string | null>(null);
-    useEffect(() => {
-        const auth = getAuth();
-        setUserId(auth.currentUser?.uid || null);
-    }, []);
+    const auth = getAuth();
+
+    const userId = auth.currentUser?.uid ?? null;
 
     const totalSum = cart.reduce(
         (acc, item) => acc + (item.discountPrice ?? item.price) * item.qty,
-        0
+        0,
     );
+
     const totalQty = cart.reduce((acc, item) => acc + item.qty, 0);
 
     const [messageApi, contextHolder] = message.useMessage();
-
     const [shippingValue, setShippingValue] = useState(1);
-    const [selectedAddress, setSelectedAddress] = useState(null);
+    const [selectedAddress, setSelectedAddress] = useState<Address | null>(
+        null,
+    );
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     const isCartEmpty = cart.length === 0;
@@ -46,7 +46,7 @@ export default function CheckoutPage() {
         if (!selectedAddress) return messageApi.error("Manzilni kiriting!");
         if (!userId)
             return messageApi.error(
-                "Foydalanuvchi aniqlanmadi! Iltimos, qayta login qiling."
+                "Foydalanuvchi aniqlanmadi! Qayta login qiling.",
             );
 
         const orderData = {
@@ -61,7 +61,7 @@ export default function CheckoutPage() {
         try {
             const res = await axios.post(
                 "https://dac4d96cc495e5de.mokky.dev/orders",
-                orderData
+                orderData,
             );
             if (res.status === 201) {
                 messageApi.success("Buyurtma muvaffaqiyatli qabul qilindi!");
@@ -85,6 +85,7 @@ export default function CheckoutPage() {
             </div>
         );
     }
+
     return (
         <div className='checkout-page'>
             {contextHolder}
@@ -92,9 +93,11 @@ export default function CheckoutPage() {
                 <Link href='/cart' className='back-link'>
                     <ArrowLeftOutlined /> Orqaga
                 </Link>
+
                 <Typography.Title level={2}>
                     Xaridni rasmiylashtirish
                 </Typography.Title>
+
                 <div className='checkout-content'>
                     <div className='left-side'>
                         <DeliveryMethod
@@ -107,12 +110,14 @@ export default function CheckoutPage() {
                         />
                         <PaymentMethod />
                     </div>
+
                     <OrderSummary
                         cart={cart}
                         totalQty={totalQty}
                         totalSum={totalSum}
                     />
                 </div>
+
                 <div className='checkout-footer'>
                     <Button
                         disabled={isCartEmpty || !selectedAddress}
@@ -123,6 +128,7 @@ export default function CheckoutPage() {
                     </Button>
                 </div>
             </div>
+
             <AddAddressModal
                 open={isModalOpen}
                 onClose={() => setIsModalOpen(false)}

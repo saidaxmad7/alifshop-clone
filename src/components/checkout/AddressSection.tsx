@@ -1,7 +1,16 @@
 import { Typography, Button } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
+import type { Address } from "@/components/checkout/AddAddressModal";
 
-export default function AddressSection({ selectedAddress, setIsModalOpen }) {
+interface Props {
+  selectedAddress: Address | null;
+  setIsModalOpen: (open: boolean) => void;
+}
+
+export default function AddressSection({
+  selectedAddress,
+  setIsModalOpen,
+}: Props) {
   return (
     <div className="section">
       <Typography.Title level={4}>Yetkazib berish manzili</Typography.Title>

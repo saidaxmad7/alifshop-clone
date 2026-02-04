@@ -2,7 +2,7 @@
 
 import { Modal, Input, Select, Form, Button } from "antd";
 
-interface Address {
+export interface Address {
   region: string;
   city: string;
   street: string;
